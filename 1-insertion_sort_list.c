@@ -18,7 +18,6 @@ void swap(listint_t **head, listint_t *a, listint_t *b)
 		*head = b;
 	a->prev = b;
 	b->next = a;
-	return;
 }
 /**
  * insertion_sort_list -  sorts a doubly linked list of integers
@@ -29,10 +28,11 @@ void swap(listint_t **head, listint_t *a, listint_t *b)
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *tmp, *rev;
-	listint_t *head = *list;
+	listint_t *head;
 
 	if (list == NULL)
 		return;
+	head = *list;
 	tmp = (*list)->next;
 	while (tmp != NULL)
 	{

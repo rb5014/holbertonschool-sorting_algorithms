@@ -1,8 +1,19 @@
 #include <stddef.h>
 #include "sort.h"
+/**
+*
+*
+*
+*/
 void selection_sort(int *array, size_t size)
 {
-	long unsigned int i, min, j, tmp;
+	size_t i, j, tmp;
+	int min;
+
+	if (size < 2 || array == NULL)
+	{
+		return;
+	}
 
 	for (i = 0; i < (size - 1); i++)
 	{
@@ -13,12 +24,13 @@ void selection_sort(int *array, size_t size)
 			{
 				min = j;
 			}
-			if (min != i)
-			{
-				tmp = array[i];
-				array[i] = min;
-				array[min] = tmp;
-			}
+		}
+		if (i != min)
+		{
+			tmp = array[i];
+			array[i] = array[min];
+			array[min] = tmp;
+			print_array(array, size);
 		}
 	}
 }

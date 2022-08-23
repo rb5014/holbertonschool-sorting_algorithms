@@ -1,14 +1,15 @@
 #include <stddef.h>
 #include "sort.h"
 /**
-*
-*
-*
+* selection_sort - function of sort selection
+* @array: array of number
+* @size: size max
+* Return: Nothing but print_array
 */
 void selection_sort(int *array, size_t size)
 {
 	size_t i, j, tmp;
-	int min;
+	long unsigned int min;
 
 	if (size < 2 || array == NULL)
 	{

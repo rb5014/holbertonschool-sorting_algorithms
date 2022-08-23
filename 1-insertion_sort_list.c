@@ -5,15 +5,16 @@
  * @nodea: pointer to the first node
  * @nodeb: pointer to the second node
  */
-void swap(listint_t *nodea, listint_t *nodeb)
+void swap(listint_t *a, listint_t *b)
 {
-
-	listint_t *tmp;
-
-	tmp = nodea;
-	
-
-
+	a->next = b->next;
+	b->prev = a->prev;
+	if (b->next)
+		b->next->prev = a;
+	if (a->prev)
+		a->prev->next = b;
+	a->prev = b;
+	b->next = a;
 	return;
 }
 /**
@@ -26,20 +27,22 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *tmp, *rev;
 	
-	if (list == NULL || (*list)->next == NULL)
+	if (list == NULL)
 		return;
-	tmp = *list;
-	while (tmp->next != NULL)
+	tmp = (*list)->next;
+	while (tmp != NULL)
 	{
-		tmp = tmp->next;
-		if (tmp < tmp->prev)
+		if (tmp->n < tmp->prev->n)
 		{
 			rev = tmp;
-			while(rev->prev != NULL && rev->prev > rev)
+			while(rev->prev != NULL && rev->prev->n > rev->n)
 			{
-				rev = rev->prev;
-				swap(rev, rev->next);
+				printf("before swap\n");
+				swap(rev->prev, rev);
+				printf("after swap\n");
+				
 			}
 		}
+		tmp = tmp->next;
 	}
 }

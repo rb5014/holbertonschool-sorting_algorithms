@@ -1,3 +1,5 @@
+#include <stddef.h>
+#include "sort.h"
 void selection_sort(int *array, size_t size)
 {
 	int i, min, j, tmp;

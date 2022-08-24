@@ -32,11 +32,11 @@ int partition(int *array, size_t size, int low, int high)
 		{
 			i++;
 			swap_values(array, i, j);
+			print_array(array, size);
 		}
 	}
 	i++;
 	swap_values(array, i, high);
-	print_array(array, size);
 	return (i);
 }
 /**

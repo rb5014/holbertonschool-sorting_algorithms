@@ -31,12 +31,19 @@ int partition(int *array, size_t size, int low, int high)
 		if (array[j] <= pivot)
 		{
 			i++;
-			swap_values(array, i, j);
-			print_array(array, size);
+			if (i != j)
+			{
+				swap_values(array, i, j);
+				print_array(array, size);
+			}
 		}
 	}
 	i++;
-	swap_values(array, i, high);
+	if (i != high)
+	{
+		swap_values(array, i, high);
+		print_array(array, size);
+	}
 	return (i);
 }
 /**
@@ -51,12 +58,11 @@ void recursive_sort(int *array, size_t size, int low, int high)
 	int p; /* pivot */
 
 	/* Ensure indices are in correct order */
-	if (low >= high)
+	if (low >= high || low < 0)
 		return;
 
 	/* Partition array and get the pivot index */
 	p = partition(array, size, low, high);
-
 	/* Sort the two partitions */
 	recursive_sort(array, size, low, p - 1); /* left side of pivot */
 	recursive_sort(array, size, p + 1, high); /* right side of pivot */
